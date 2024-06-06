@@ -16,6 +16,7 @@ function sortear () {
         }
     }
     exibirNumerosSorteados(numerosSorteados);
+    alterarStatusBotao();
 }
 
 function gerarNumeroAleatorio (numeroMinimo, numeroMaximo) {
@@ -24,5 +25,25 @@ function gerarNumeroAleatorio (numeroMinimo, numeroMaximo) {
 
 function exibirNumerosSorteados(numerosSorteados) {
     let resultado = document.getElementById('resultado2');
-    resultado.innerHTML = ('Números sorteados: ' + numerosSorteados);
+    resultado.innerHTML = (`Números sorteados: ${numerosSorteados}`);
 }
+
+function alterarStatusBotao() {
+    let botao = document.getElementById('btn-reiniciar');
+    if (botao.classList.contains('container__botao-desabilitado')) {
+        botao.classList.remove('container__botao-desabilitado');
+        botao.classList.add('container__botao');
+    } else {
+        botao.classList.remove('container__botao');
+        botao.classList.add('container__botao-desabilitado');
+    }
+}
+
+function reiniciar() {
+    document.getElementById('quantidade').value = '';
+    document.getElementById('de').value = '';
+    document.getElementById('ate').value = '';
+    document.getElementById('resultado2').innerHTML = 'Números sorteados:  nenhum até agora';
+    alterarStatusBotao();
+}
+
